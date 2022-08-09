@@ -1,0 +1,15 @@
+{
+  "name": "sk-del-notes-app",
+  "version": "1.0.0",
+  "description": "Awesome App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SumitK",
+  "license": "ISC",
+  "dependencies": {
+    "color": "^4.2.3",
+    "yargs": "^17.5.1"
+  }
+}
