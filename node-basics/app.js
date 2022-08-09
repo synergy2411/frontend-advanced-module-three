@@ -51,13 +51,14 @@
 // console.log("END");
 
 
-const http = require("http");
+// const http = require("http");
+// const { getDailyFortune, getLuckyNumber } = require("./utils/fortune")
 
-const server = http.createServer(function (request, response) {
-    console.log("URL : ", request.url)
-    console.log("METHOD : ", request.method)
-    response.write("Hello from server");
-    response.end()
-})
+// const server = http.createServer(function (request, response) {
+//     console.log("URL === ", request.url)
+//     console.log("METHOD : ", request.method)
+//     response.write(getDailyFortune() + " -> " + getLuckyNumber());
+//     response.end()
+// })
 
-server.listen(3030)
+// server.listen(3030)
