@@ -15,6 +15,10 @@ app.get("/", (request, response, next) => {
     // response.send(`<h1>Hello World</h1>`)
 })
 
+app.get("/todos", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html")
+})
+
 // GET
 app.get("/api/todos", (req, res) => {
     res.send(todos)

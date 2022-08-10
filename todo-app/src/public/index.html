@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <h1>My Todos</h1>
+    <input type="text" id="txtTodo" />
+    <button id="btnAdd">Add Item</button>
+
+    <script>
+      const txtTodo = document.querySelector("#txtTodo");
+      const btnAdd = document.querySelector("#btnAdd");
+
+      const getTodo = () => {
+        fetch("/api/todos")
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch(console.log);
+      };
+
+      getTodo();
+
+      const createUI = () => {};
+
+      btnAdd.addEventListener("click", () => {
+        fetch("http://localhost:3031/api/todos", {
+          method: "POST",
+          body: JSON.stringify({ label: txtTodo }),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((result) => console.log(result))
+          .catch(console.log);
+      });
+    </script>
+  </body>
+</html>
