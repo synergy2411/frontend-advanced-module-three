@@ -33,7 +33,7 @@
       btnAdd.addEventListener("click", () => {
         fetch("http://localhost:3031/api/todos", {
           method: "POST",
-          body: JSON.stringify({ label: txtTodo }),
+          body: JSON.stringify({ label: txtTodo.value, status: "pending" }),
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",

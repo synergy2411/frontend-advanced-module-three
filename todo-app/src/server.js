@@ -1,9 +1,11 @@
 const express = require("express");
-
+const cors = require("cors");
 const app = express();
+require("./db")
+const TodoModel = require("./model/todo.model");
 
 app.use(express.json());
-
+app.use(cors());
 const todos = [
     { id: "101", label: "renew car insurance", status: "done" },
     { id: "102", label: "pot new plants", status: "pending" },
@@ -20,19 +22,34 @@ app.get("/todos", (req, res) => {
 })
 
 // GET
-app.get("/api/todos", (req, res) => {
-    res.send(todos)
+app.get("/api/todos", async (req, res) => {
+    try {
+        const allTodos = await TodoModel.find()
+        return res.send(allTodos)
+    } catch (err) {
+        console.log(err);
+        return res.send({ err: "Something bad happened" })
+    }
 })
 
 // POST
-app.post("/api/todos", (req, res) => {
-    let todo = {
-        id: "10" + (todos.length + 1),
-        label: req.body.label,
-        status: "pending"
+app.post("/api/todos", async (req, res) => {
+
+    try {
+        console.log(req.body);
+        const todo = new TodoModel(req.body)
+        const createdTodo = await todo.save()
+        return res.send(createdTodo)
+    } catch (err) {
+        return res.send({ error: "Not created" })
     }
-    todos.push(todo);
-    return res.send(todo)
+    // let todo = {
+    //     id: "10" + (todos.length + 1),
+    //     label: req.body.label,
+    //     status: "pending"
+    // }
+    // todos.push(todo);
+    // return res.send(todo)
 })
 
 // PATCH
