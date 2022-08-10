@@ -9,7 +9,7 @@
   "author": "SumitK",
   "license": "ISC",
   "dependencies": {
-    "color": "^4.2.3",
+    "colors": "^1.4.0",
     "yargs": "^17.5.1"
   }
 }
