@@ -1,0 +1,22 @@
+{
+  "name": "node-basics",
+  "version": "1.0.1",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "yargs": "^17.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node globals.js",
+    "dev": "nodemon globals.js"
+  },
+  "keywords": [
+    "Awesome project",
+    "Deloitte project"
+  ],
+  "author": "SumitK",
+  "license": "ISC"
+}
