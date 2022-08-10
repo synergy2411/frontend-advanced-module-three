@@ -32,6 +32,16 @@ app.post("/api/todos", (req, res) => {
 })
 
 // PATCH
+app.patch("/api/todos/:todoId", (req, res) => {
+    const position = todos.findIndex(t => t.id === req.params.todoId)
+    if (position >= 0) {
+        todos[position] = { ...todos[position], ...req.body }
+        return res.send(todos[position])
+    } else {
+        return res.send({ error: "Unable to find todo" })
+    }
+})
+
 // DELETE
 app.delete("/api/todos/:todoId", (req, res) => {
     const position = todos.findIndex(todo => todo.id === req.params.todoId)
