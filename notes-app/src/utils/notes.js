@@ -11,9 +11,14 @@ const loadNote = () => {
     }
 }
 
-const saveNote = (notes) => {
+// const saveNote = (notes, flag) => {
+//     fs.writeFileSync("./notes.json", JSON.stringify(notes))
+//     console.log("TITLE : " + flag);
+//     // flag === "ADDED" ? console.log("NOTE ADDED".green) : console.log("NOTE DELETED".green);
+// }
+const saveNote = (notes, cb) => {
     fs.writeFileSync("./notes.json", JSON.stringify(notes))
-    console.log("Saved".green);
+    cb()
 }
 
 const addNote = (title, body) => {
@@ -25,7 +30,8 @@ const addNote = (title, body) => {
         return;
     }
     notes.push(newNote)
-    saveNote(notes);
+    // saveNote(notes, "ADDED");
+    saveNote(notes, function () { console.log("TITLE : ADDED"); });
 }
 
 // read
@@ -47,7 +53,8 @@ const removeNote = title => {
     if (position >= 0) {
         // notes.splice(position, 1);
         const filteredNotes = notes.filter(n => n.title !== title)
-        saveNote(filteredNotes)
+        // saveNote(filteredNotes, "REMOVED")
+        saveNote(filteredNotes, function () { console.log("TITLE : DELETED"); })
     } else {
         console.log("Unable to delete")
     }
